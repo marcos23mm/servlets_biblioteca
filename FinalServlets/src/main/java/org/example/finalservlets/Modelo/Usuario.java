@@ -33,7 +33,7 @@ public class Usuario {
     @Column(name = "penalizacionHasta")
     private LocalDate penalizacionHasta;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)//Esto hará que JPA cargue automáticamente los préstamos asociados al usuario cuando se obtenga el usuario desde la base de datos
     @JsonManagedReference
     private Set<Prestamo> prestamos = new LinkedHashSet<>();
 

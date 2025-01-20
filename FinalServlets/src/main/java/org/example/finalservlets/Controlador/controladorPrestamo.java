@@ -21,8 +21,8 @@ public class controladorPrestamo {
         if (!"Disponible".equalsIgnoreCase(ejemplar.getEstado())) {
             throw new IllegalStateException("El ejemplar no está disponible.");
         }
-        if (usuario.getPrestamos().stream().filter(p -> p.getFechaDevolucion() == null).count() >= 3) {
-            throw new IllegalStateException("El usuario ya tiene 3 préstamos activos.");
+        if (usuario.getPrestamos().stream().count() >= 3) {
+            throw new IllegalStateException("El usuario ya tiene 3 préstamos.");
         }
     }
 
