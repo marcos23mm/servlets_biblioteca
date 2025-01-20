@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "libro")
+@Table(name = "Libro")
 public class Libro {
     @Id
     @Column(name = "isbn", nullable = false, length = 20)

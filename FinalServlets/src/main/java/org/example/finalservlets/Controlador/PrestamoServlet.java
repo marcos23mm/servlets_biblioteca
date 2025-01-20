@@ -55,8 +55,12 @@ public class PrestamoServlet extends HttpServlet {
                     Integer ejemplarId = Integer.parseInt(request.getParameter("ejemplarId"));
                     LocalDate fechaInicio = LocalDate.parse(request.getParameter("fechaInicio"));
 
+                    System.out.println("Parámetros recibidos: usuarioId = " + usuarioId + ", ejemplarId = " + ejemplarId + ", fechaInicio = " + fechaInicio);
+
                     Usuario usuario = daoUsuario.getById(usuarioId);
                     Ejemplar ejemplar = daoEjemplar.getById(ejemplarId);
+
+
 
                     if (usuario == null) {
                         json_response = conversorJson.writeValueAsString("Usuario no encontrado");

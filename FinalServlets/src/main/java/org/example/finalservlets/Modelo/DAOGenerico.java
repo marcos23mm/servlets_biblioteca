@@ -42,15 +42,22 @@ public class DAOGenerico<T, ID> {
         }
     }
 
-    // SELECT WHERE ID
     public T getById(ID id) {
         try {
-            return em.find(clase, id);
+            System.out.println("Buscando entidad con ID: " + id);
+            T entity = em.find(clase, id);
+            if (entity == null) {
+                System.err.println("No se encontró la entidad con ID: " + id);
+            } else {
+                System.out.println("Entidad encontrada: " + entity.toString());
+            }
+            return entity;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
+
 
     // SELECT *
     public List<T> getAll() {
