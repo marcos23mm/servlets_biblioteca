@@ -72,7 +72,7 @@ public class PrestamoServlet extends HttpServlet {
                         boolean prestamoAgregado = daoPrestamo.add(prestamo);
 
                         // Actualizar el estado del ejemplar
-                        daoEjemplar.update(ejemplar); // Asegúrate de que el DAO actualice los cambios en la base de datos
+                        daoEjemplar.update(ejemplar); 
 
                         json_response = conversorJson.writeValueAsString(
                                 prestamoAgregado ? "Préstamo registrado correctamente." : "Error al registrar el préstamo."
@@ -83,16 +83,16 @@ public class PrestamoServlet extends HttpServlet {
                     break;
 
 
-                case "return": // Registrar una devolución
+                case "return": 
                     Integer prestamoId = Integer.parseInt(request.getParameter("prestamoId"));
 
                     Prestamo prestamo = daoPrestamo.getById(prestamoId);
 
                     try {
-                        // Preparar la devolución
+                        
                         controladorPrestamo.prepararDevolucion(prestamo);
 
-                        // Persistencia
+                        
                         Prestamo updatedPrestamo = daoPrestamo.update(prestamo);
 
                         json_response = conversorJson.writeValueAsString(
